@@ -14,7 +14,7 @@ class SecondScreen: SKScene, SKPhysicsContactDelegate {
     var head: SKNode!
     var neck1: SKNode!
     var neck2: SKNode!
-    var shoulder: SKNode!
+    var torso: SKNode!
     
     //label node
     var labelNode: SKLabelNode!
@@ -24,8 +24,8 @@ class SecondScreen: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         //inicializes characters' body nodes and their children in their hierarchy
-        shoulder = childNode(withName: "shoulder")
-        neck1 = shoulder.childNode(withName: "neck1")
+        torso = childNode(withName: "torso")
+        neck1 = torso.childNode(withName: "neck1")
         neck2 = neck1.childNode(withName: "neck2")
         head = neck2.childNode(withName: "head")
         
@@ -34,8 +34,8 @@ class SecondScreen: SKScene, SKPhysicsContactDelegate {
             label.verticalAlignmentMode = .top
             label.text = "Ponha a cabeça da pessoa ligeiramente para frente."
             label.lineBreakMode = .byWordWrapping
-            label.numberOfLines = 2
-            label.preferredMaxLayoutWidth = 400
+            label.numberOfLines = 3
+            label.preferredMaxLayoutWidth = 300
         }
         
         //inicializing collision node
@@ -71,8 +71,8 @@ class SecondScreen: SKScene, SKPhysicsContactDelegate {
                 label.verticalAlignmentMode = .top
                 label.text = "Correto! Mas lembre: não ponha a cabeça para trás, o sangue pode acabar indo para o estômago!"
                 label.lineBreakMode = .byWordWrapping
-                label.numberOfLines = 4
-                label.preferredMaxLayoutWidth = 350
+                label.numberOfLines = 5
+                label.preferredMaxLayoutWidth = 300
             }
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {

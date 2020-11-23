@@ -39,7 +39,7 @@ class FirstScreen: SKScene, SKPhysicsContactDelegate {
             label.text = "Ponha a pessoa na posição vertical."
             label.lineBreakMode = .byWordWrapping
             label.numberOfLines = 2
-            label.preferredMaxLayoutWidth = 400
+            label.preferredMaxLayoutWidth = 300
              }
         
         //set physicsWorld
@@ -52,11 +52,11 @@ class FirstScreen: SKScene, SKPhysicsContactDelegate {
     
     //Allows for the user to lift the characters body, running the animation on the desired node
     func liftBodyTo(_ location: CGPoint) {
-      let liftBody = SKAction.reach(to: location, rootNode: shoulder, duration: 0.1)
+        let liftBody = SKAction.reach(to: location, rootNode: shoulder, duration: 0.1)
         neck.run(liftBody)
     }
 
-    //Upon a touch event, run liftBodyTo action with the tap location as the end position
+    //Upon a touch event, run liftBodyTo action with the drag location as the end position
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
@@ -72,7 +72,7 @@ class FirstScreen: SKScene, SKPhysicsContactDelegate {
                 label.text = "Isso!"
                 label.lineBreakMode = .byWordWrapping
                 label.numberOfLines = 2
-                label.preferredMaxLayoutWidth = 400
+                label.preferredMaxLayoutWidth = 300
             }
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -85,15 +85,3 @@ class FirstScreen: SKScene, SKPhysicsContactDelegate {
     }
 }
 
-//MARK: - SKNode Position
-extension SKNode{
-    public var scaleAsSize: CGSize {
-     get {
-        return frame.size
-     }
-     set {
-       xScale = newValue.width/frame.size.width
-       yScale = newValue.height/frame.size.height
-     }
-   }
-}
